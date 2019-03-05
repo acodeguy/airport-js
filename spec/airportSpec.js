@@ -9,7 +9,7 @@ describe('Airport', function() {
   });
 
   it('has 5 available hangar spaces on creation', function() {
-    expect(airport.hangar.length).toEqual(5);
+    expect(airport.hangarCapacity).toEqual(5);
   });
 
   it('lands a plane in its hangar', function() {
@@ -29,9 +29,10 @@ describe('Airport', function() {
   });
 
   it('prevents landing when the airport is full', function() {
-    for (var i = 1; i < 6; i++) {
+    for (var i = 1; i <= 5; i++) {
       airport.land({});
+      console.log("Airport: " + airport.hangar.length)
     }
-    expect(airport.land(planeSpy)).toThrow('airport full');
+    expect(function() { airport.land(planeSpy) }).toThrow('airport full');
   });
 });
