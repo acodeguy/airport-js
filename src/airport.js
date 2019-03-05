@@ -11,7 +11,8 @@ Airport.prototype.land = function(plane) {
   }
 }
 Airport.prototype.takeOff = function(plane) {
-  this.hangar.pop(plane);
+  var index = this.hangar.indexOf(plane);
+  this.hangar.splice(index, 1);
 }
 Airport.prototype.hasPlane = function(plane) {
   return this.hangar.includes(plane);
