@@ -11,9 +11,17 @@ Airport.prototype.land = function(plane) {
   }
 }
 Airport.prototype.takeOff = function(plane) {
-  var index = this.hangar.indexOf(plane);
-  this.hangar.splice(index, 1);
+  if (this.checkWeather() == "stormy") {
+    throw "cannot takeoff - stormy weather";
+  } else {
+    var index = this.hangar.indexOf(plane);
+    this.hangar.splice(index, 1);
+  }
+  
 }
 Airport.prototype.hasPlane = function(plane) {
   return this.hangar.includes(plane);
+}
+
+Airport.prototype.checkWeather = function() {
 }
