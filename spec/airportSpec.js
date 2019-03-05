@@ -31,7 +31,6 @@ describe('Airport', function() {
   it('prevents landing when the airport is full', function() {
     for (var i = 1; i <= 5; i++) {
       airport.land({});
-      console.log("Airport: " + airport.hangar.length)
     }
     expect(function() { airport.land(planeSpy) }).toThrow('airport full');
   });
