@@ -17,4 +17,15 @@ describe('Airport', function() {
     expect(airport.hangar).toContain(planeSpy);
   });
 
+  it('despatches a plane from its hangar', function() {
+    airport.takeOff(planeSpy);
+    expect(airport.hangar).not.toContain(planeSpy);
+  });
+
+  it('confirms that a plane is not in the airport after take-off', function() {
+    airport.land(planeSpy);
+    airport.takeOff(planeSpy);
+    expect(airport.hasPlane(planeSpy)).toEqual(false);
+  });
+
 });
