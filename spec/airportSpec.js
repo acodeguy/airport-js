@@ -28,4 +28,10 @@ describe('Airport', function() {
     expect(airport.hasPlane(planeSpy)).toEqual(false);
   });
 
+  it('prevents landing when the airport is full', function() {
+    for (var i = 1; i < 6; i++) {
+      airport.land({});
+    }
+    expect(airport.land(planeSpy)).toThrow('airport full');
+  });
 });
