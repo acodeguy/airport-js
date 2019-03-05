@@ -10,4 +10,9 @@ describe('Airport', function() {
     expect(airport.hangar.length).toEqual(5);
   });
 
+  it('lands a plane in its hangar', function() {
+    airport.land(plane);
+    expect(airport.hangar.toContain(plane));
+  });
+  
 });
